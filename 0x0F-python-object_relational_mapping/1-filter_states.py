@@ -18,7 +18,7 @@ if __name__ == "__main__":
     cur = db.cursor()
 
     # Execute the query to fetch all states
-    cur.execute("""SELECT * FROM states WHERE name LIKE 'N%' ORDER BY states.id""")
+    cur.execute("""SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY states.id""")
 
     # Fetch and print the results
     for row in cur.fetchall():

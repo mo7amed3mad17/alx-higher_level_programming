@@ -19,7 +19,7 @@ if __name__ == "__main__":
 
     # Execute the query to fetch all states
     cur.execute("""SELECT * FROM states WHERE \
-                name LIKE BINARY 'N%' ORDER BY states.id""")
+                name LIKE 'N%' ORDER BY id ASC""")
 
     # Fetch and print the results
     for row in cur.fetchall():

@@ -24,8 +24,9 @@ if __name__ == "__main__":
             WHERE states.name = %s", (state_name,))
 
     # Fetch and print the results
-    for row in cur.fetchall():
-        print(row)
+    rows = cur.fetchall()
+    tmp = list(row[0] for row in rows)
+    print(*tmp, sep=', ')
 
     # Close the cursor and the database connection
     cur.close()

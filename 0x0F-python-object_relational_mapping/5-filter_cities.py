@@ -19,9 +19,9 @@ if __name__ == "__main__":
 
     # Execute the query to fetch all states
     state_name = sys.argv[4]
-    cur.execute("SELECT cities.id, cities.name, states.name FROM cities \
-            JOIN states ON cities.state_id = states.id \
-            WHERE states.name = %s ORDER BY cities.id ASC", (state_name,))
+    cur.execute("SELECT cities.name FROM cities \
+            INNER JOIN states ON states.id=cities.state_id \
+            WHERE states.name = %s", (state_name,))
 
     # Fetch and print the results
     for row in cur.fetchall():

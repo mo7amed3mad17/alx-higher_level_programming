@@ -14,18 +14,16 @@ if __name__ == "__main__":
         db=sys.argv[3],
     )
 
-    name = sys.argv[4]
-
     # Create a cursor object
-    cur = db.cursor()
+    c = db.cursor()
 
     # Execute the query to fetch all states
-    cur.execute("SELECT * FROM states WHERE name = %s", (name,))
+    c.execute("SELECT * FROM states WHERE name LIKE '{}'".format(sys.argv[4]))
 
     # Fetch and print the results
-    for row in cur.fetchall():
+    for row in c.fetchall():
         print(row)
 
     # Close the cursor and the database connection
-    cur.close()
+    c.close()
     db.close()
